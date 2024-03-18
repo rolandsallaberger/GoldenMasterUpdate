@@ -41,5 +41,7 @@ TAKEOWN /F "C:\Program Files\WindowsApps" /R /A /D Y
 ICACLS "C:\Program Files\WindowsApps" /grant Administrators:F /T
 
 #Update Apps per Winget - Excluding O365 (does not accept Channel)
+winget pin add  --id "Microsoft.Office"
+winget pin list
 winget upgrade
-#winget upgrade --all
+winget upgrade --all
