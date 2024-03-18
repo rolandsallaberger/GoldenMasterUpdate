@@ -16,7 +16,7 @@ Add-AppxPackage "C:\WinGet\Microsoft.VCLibs.x64.14.00.Desktop.appx"
 
 # Install Microsoft.UI.Xaml from NuGet
 Invoke-WebRequest -Uri https://www.nuget.org/api/v2/package/Microsoft.UI.Xaml/2.8.6 -OutFile "C:\WinGet\Microsoft.UI.Xaml.2.8.6.zip"
-Expand-Archive "C:\WinGet\Microsoft.UI.Xaml.2.8.6.zip" -DestinationPath "C:\WinGet\Microsoft.UI.Xaml.2.8.6"
+Expand-Archive "C:\WinGet\Microsoft.UI.Xaml.2.8.6.zip" -DestinationPath "C:\WinGet\Microsoft.UI.Xaml.2.8.6" -force
 Add-AppxPackage "C:\WinGet\Microsoft.UI.Xaml.2.8.6\tools\AppX\x64\Release\Microsoft.UI.Xaml.2.8.appx"
 
 # Install latest WinGet from GitHub
