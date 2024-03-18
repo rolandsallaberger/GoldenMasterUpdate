@@ -42,4 +42,4 @@ ICACLS "C:\Program Files\WindowsApps" /grant Administrators:F /T
 
 #Update Apps per Winget - Excluding O365 (does not accept Channel)
 winget upgrade
-winget upgrade --all
+#winget upgrade --all
