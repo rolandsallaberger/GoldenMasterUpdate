@@ -4,7 +4,7 @@ Get-WUList
 Install-WindowsUpdate -MicrosoftUpdate -AcceptAll -IgnoreReboot 
 
 # Install O365 Update
-& 'C:\Program Files\Common Files\microsoft shared\ClickToRun\OfficeC2RClient.exe' /update user displaylevel=false forceappshutdown=true
+& 'C:\Program Files\Common Files\microsoft shared\ClickToRun\OfficeC2RClient.exe' /update user displaylevel=true forceappshutdown=true
 
 # Install Winget
 # Create WinGet Folder
