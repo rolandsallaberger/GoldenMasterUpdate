@@ -26,6 +26,7 @@ New-Item -Path C:\WinGet -ItemType directory -ErrorAction SilentlyContinue
 # Install latest WinGet from GitHub
 Invoke-WebRequest -Uri https://github.com/microsoft/winget-cli/releases/latest/download/Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle -OutFile "C:\WinGet\Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle"
 Add-AppxPackage "C:\WinGet\Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle"
+#
 
 # Fix Permissions
 TAKEOWN /F "C:\Program Files\WindowsApps" /R /A /D Y
