@@ -19,6 +19,10 @@ Invoke-WebRequest -Uri https://www.nuget.org/api/v2/package/Microsoft.UI.Xaml/2.
 Expand-Archive "C:\WinGet\Microsoft.UI.Xaml.2.8.6.zip" -DestinationPath "C:\WinGet\Microsoft.UI.Xaml.2.8.6" -force
 Add-AppxPackage "C:\WinGet\Microsoft.UI.Xaml.2.8.6\tools\AppX\x64\Release\Microsoft.UI.Xaml.2.8.appx"
 
+# Install Winget
+# Create WinGet Folder
+New-Item -Path C:\WinGet -ItemType directory -ErrorAction SilentlyContinue
+
 # Install latest WinGet from GitHub
 Invoke-WebRequest -Uri https://github.com/microsoft/winget-cli/releases/latest/download/Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle -OutFile "C:\WinGet\Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle"
 Add-AppxPackage "C:\WinGet\Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle"
