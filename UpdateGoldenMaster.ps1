@@ -1,4 +1,5 @@
 # Install Windows Updates
+[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 Install-Module -Name PSWindowsUpdate -Force
 Get-WUList
 Install-WindowsUpdate -MicrosoftUpdate -AcceptAll -IgnoreReboot 
