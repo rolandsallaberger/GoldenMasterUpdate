@@ -7,6 +7,32 @@ Install-WindowsUpdate -MicrosoftUpdate -AcceptAll -IgnoreReboot
 # Install O365 Update
 & 'C:\Program Files\Common Files\microsoft shared\ClickToRun\OfficeC2RClient.exe' /update user displaylevel=true forceappshutdown=true
 
+#*******************************
+# Install Chocolately Package Manager
+[Net.ServicePointManager]::SecurityProtocol = [Net.ServicePointManager]::SecurityProtocol -bor [Net.SecurityProtocolType]::Tls12
+Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+$env:Path = [System.Environment]::ExpandEnvironmentVariables([System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User"))
+
+# Install WinGet from Chocolatey
+choco install winget
+choco install winget.powershell
+
+# Fix Permissions
+TAKEOWN /F "C:\Program Files\WindowsApps" /R /A /D Y
+ICACLS "C:\Program Files\WindowsApps" /grant Administrators:F /T
+
+# Add Environment Path
+$ResolveWingetPath = Resolve-Path "C:\Program Files\WindowsApps\Microsoft.DesktopAppInstaller_*_x64__8wekyb3d8bbwe"
+if ($ResolveWingetPath) {
+	$WingetPath = $ResolveWingetPath[-1].Path
+}
+$ENV:PATH += ";$WingetPath"
+$SystemEnvPath = [System.Environment]::GetEnvironmentVariable('PATH', [System.EnvironmentVariableTarget]::Machine)
+$SystemEnvPath += ";$WingetPath;"
+setx /M PATH "$SystemEnvPath"
+
+
+
 
 #********************
 Write-Information "This script needs be run on Windows Server 2019 or 2022"
